@@ -26,7 +26,9 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-" set undofile
+"set undofile
+
+let mapleader = ","
 
 nnoremap / /\v
 vnoremap / /\v
@@ -43,9 +45,10 @@ vnoremap <tab> %
 set wrap linebreak textwidth=0
 set textwidth=79
 set formatoptions=qrn1
-" set colorcolumn=85
+"set colorcolumn=85
 
-set list
+"set list
+nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 " Stop's you from using Arrow Keys...
@@ -80,3 +83,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 colorscheme twilight
+
+" Macros
+nnoremap <leader>S ?{<CR>jV/^\s\}?$<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>q gqip
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" MacVim Settings
+set guioptions-=T
