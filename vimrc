@@ -26,12 +26,9 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-"set undofile
 
 let mapleader = ","
 
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault
@@ -45,23 +42,22 @@ vnoremap <tab> %
 set wrap linebreak textwidth=0
 set textwidth=79
 set formatoptions=qrn1
-"set colorcolumn=85
 
-"set list
+set list
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 " Stop's you from using Arrow Keys...
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"nnoremap j gj
+"nnoremap k gk
 
 " Remap ; -> :, saves a Shift
 nnoremap ; :
