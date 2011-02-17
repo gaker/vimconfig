@@ -104,6 +104,8 @@ set noswapfile
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+let g:CommandTAcceptSelectionTabMap='<CR>'
+let g:CommandTAcceptSelectionMap='<C-t>'
 
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set tabstop=4 textwidth=79 expandtab
