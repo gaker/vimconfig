@@ -13,7 +13,7 @@ set modelines=0
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab 
+set noexpandtab
 
 " Whitespace
 set list listchars=tab:\ \ ,trail:·
@@ -51,7 +51,6 @@ set hlsearch
 " Textwrap, sho' nuf
 set wrap
 set textwidth=79
-set formatoptions=qrn1
 
 " Remap ; -> :, saves a Shift
 nnoremap ; :
@@ -133,11 +132,9 @@ let macvim_hig_shift_movement = 1
 map <Leader>n :NERDTreeToggle<CR>
 
 " Refresh Ctags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR><CR>
 
 " Setup Tlist
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map <Leader>tl :TlistToggle<CR>
 
-" Turn off search
-nnoremap <esc> :noh<return><esc>
