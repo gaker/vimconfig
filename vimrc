@@ -51,6 +51,7 @@ set hlsearch
 " Textwrap, sho' nuf
 set wrap
 set textwidth=79
+set formatoptions=qrn1
 
 " Remap ; -> :, saves a Shift
 nnoremap ; :
