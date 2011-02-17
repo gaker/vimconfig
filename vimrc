@@ -1,16 +1,24 @@
+" Turn on Pathogen and load all the bundles
 filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
+" Turn off VI compatability, we won't need it where we're going
 set nocompatible
 
+" Modelines can cause issues??
 set modelines=0
 
+" Fix up yer tabs, ya'll
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab 
+set noexpandtab 
 
+" Whitespace
+set list listchars=tab:\ \ ,trail:·
+
+" Alright, here's a whole bunch of stuff I have no clue about :)
 set number
 set encoding=utf-8
 set scrolloff=3
@@ -18,50 +26,31 @@ set autoindent
 set showmode
 set showcmd
 set hidden
-set wildmenu
-set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-"set undofile
 
+" Tab completion
+set wildmenu
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,.hg
+
+" Change the leader to comma, because backslash is so passe
 let mapleader = ","
 
-nnoremap / /\v
-vnoremap / /\v
+" Searching like it's 1999
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
-set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 
-set wrap linebreak textwidth=0
+" Textwrap, sho' nuf
+set wrap
 set textwidth=79
-set formatoptions=qrn1
-"set colorcolumn=85
-
-"set list
-nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
-
-" Stop's you from using Arrow Keys...
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
 
 " Remap ; -> :, saves a Shift
 nnoremap ; :
@@ -69,11 +58,24 @@ nnoremap ; :
 " Safe after losing focus
 au FocusLost * :wa
 
+" Ack
+nnoremap <leader>a :Ack
+
+" Hardwrap paragraphs of text
 nnoremap <leader>q gqip
+
+" Fold tag
 nnoremap <leader>ft Vatzf
+
+" Sort css properties...whoa
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+" Select pasted text
 nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Split windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -82,12 +84,57 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-colorscheme twilight
+" Set color scheme
+if &t_Co >= 256 || has("gui_running")
+   colorscheme vwilight
+endif
 
-" Macros
-nnoremap <leader>S ?{<CR>jV/^\s\}?$<CR>k:sort<CR>:noh<CR>
-nnoremap <leader>q gqip
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+if &t_Co > 2 || has("gui_running")
+   " switch syntax highlighting on, when the terminal has colors
+   syntax on
+endif
 
 " MacVim Settings
-set guioptions-=T
+set guifont=Monaco:h12
+
+" Ditch backup files
+set nobackup
+set noswapfile
+
+" Command-T configuration
+let g:CommandTMaxHeight=20
+
+" make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python  set tabstop=4 textwidth=79 expandtab
+
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" Inserts the path of the currently edited file into a command
+" Command mode: Ctrl+P
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
+
+" Turn on NERDTree
+map <Leader>n :NERDTreeToggle<CR>
+
+" Refresh Ctags
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+
+" Setup Tlist
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+map <Leader>tl :TlistToggle<CR>
+
+" Turn off search
+nnoremap <esc> :noh<return><esc>
