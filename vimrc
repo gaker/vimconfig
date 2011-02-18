@@ -33,6 +33,9 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 
+" Use tabs instead of opening a buffer on top of another
+set switchbuf=usetab
+
 " Tab completion
 set wildmenu
 set wildmode=list:longest,list:full
@@ -74,8 +77,10 @@ nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>v V`]
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <leader>v :tabedit $MYVIMRC<CR>
+if has("autocmd")
+	autocmd bufwritepost .vimrc source $MYVIMRC	
+endif
 
 " Split windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -138,3 +143,5 @@ map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR><CR>
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map <Leader>tl :TlistToggle<CR>
 
+" ConqueTerm Settings
+let g:ConqueTerm_TERM = "xterm-color"

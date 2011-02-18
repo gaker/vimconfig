@@ -198,3 +198,5 @@ call s:DefineCommand("mkdir", "Mkdir")
 
 " Turn off search
 nnoremap <esc> :noh<return><esc>
+
+set scrolloff=5
