@@ -72,7 +72,7 @@ nnoremap <leader>q gqip
 nnoremap <leader>ft Vatzf
 
 " Sort css properties...whoa
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>S ?{<CR>jV/^\s\}?$<CR>k:sort<CR>:noh<CR>
 
 " Select pasted text
 nnoremap <leader>v V`]
@@ -141,8 +141,24 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR><CR>
 
 " Setup Tlist
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map <Leader>tl :TlistToggle<CR>
+let tlist_php_settings = 'php;c:class;f:function;d:constant'
+let Tlist_Close_On_Select = 1
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Show_One_File = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
 
 " ConqueTerm Settings
 let g:ConqueTerm_TERM = "xterm-color"
+
+" SuperTab Settings (aka, make my tab work normally damn it)
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingFowrard = '<s-c-tab>'
+let g:SuperTabMappingTabLiteral = '<tab>'
+
+" SnipMate
+map <Leader>rs :call ReloadAllSnippets()<CR>
+
+" FuzzyFinder
+let g:fuf_buffertag_ctagsPath = '/usr/local/bin/ctags'
+map <C-S-T> :FufBufferTag<CR>

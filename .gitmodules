@@ -76,3 +76,9 @@
 [submodule "bundle/vim-yankring"]
 	path = bundle/vim-yankring
 	url = https://github.com/chrismetcalf/vim-yankring.git
+[submodule "bundle/fuzzyfinder"]
+	path = bundle/fuzzyfinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "bundle/l9"]
+	path = bundle/l9
+	url = https://github.com/clones/vim-l9.git
