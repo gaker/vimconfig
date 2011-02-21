@@ -71,7 +71,7 @@ nnoremap <leader>q gqip
 nnoremap <leader>ft Vatzf
 
 " Sort css properties...whoa
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>S :g#\({\n\)\@<=#.,/}/sort<CR>:noh<CR>
 
 " Select pasted text
 nnoremap <leader>v V`]
@@ -145,3 +145,6 @@ map <Leader>tl :TlistToggle<CR>
 
 " ConqueTerm Settings
 let g:ConqueTerm_TERM = "xterm-color"
+
+" Get rid of those ugly scrollbars in mvim
+set guioptions=aAce
