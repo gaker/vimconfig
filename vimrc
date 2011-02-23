@@ -54,16 +54,17 @@ set hlsearch
 
 " Textwrap, sho' nuf
 set wrap
-set textwidth=79
-
-" Remap ; -> :, saves a Shift
-nnoremap ; :
+set linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
+let &showbreak = '> '
 
 " Safe after losing focus
 au FocusLost * :wa
 
 " Ack
-nnoremap <leader>a :Ack
+nnoremap <leader>a :tabnew<CR>:Ack 
 
 " Hardwrap paragraphs of text
 nnoremap <leader>q gqip
@@ -72,7 +73,7 @@ nnoremap <leader>q gqip
 nnoremap <leader>ft Vatzf
 
 " Sort css properties...whoa
-nnoremap <leader>S ?{<CR>jV/^\s\}?$<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>S ?{<CR>jV/^\s*\}<CR>k:sort<CR>:noh<CR>
 
 " Select pasted text
 nnoremap <leader>v V`]
@@ -137,6 +138,9 @@ let macvim_hig_shift_movement = 1
 " Turn on NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 
+" Tweak some NERDCommenter settings
+let NERDSpaceDelims = 1
+
 " Refresh Ctags
 map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR><CR>
 
@@ -154,7 +158,6 @@ let g:ConqueTerm_TERM = "xterm-color"
 " SuperTab Settings (aka, make my tab work normally damn it)
 let g:SuperTabMappingForward = '<s-tab>'
 let g:SuperTabMappingFowrard = '<s-c-tab>'
-let g:SuperTabMappingTabLiteral = '<tab>'
 
 " SnipMate
 map <Leader>rs :call ReloadAllSnippets()<CR>
