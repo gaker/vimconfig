@@ -40,7 +40,7 @@ set switchbuf=usetab
 " Tab completion
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.hg
+set wildignore+=*.o,*.obj,.git,*.rbc,.hg,*.pyc
 
 " Change the leader to comma, because backslash is so passe
 let mapleader = ","
