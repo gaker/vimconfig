@@ -11,7 +11,7 @@ if has("gui_macvim")
 	macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
 	
 	" Command-Shift-F for Ack
-	map <D-F> :Ack<space>
+	" map <D-F> :Ack<space>
 	
 	" Command-e for ConqueTerm
 	map <D-e> :call StartTerm()<CR>
@@ -64,11 +64,11 @@ autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 " buffer that's left is the NERDTree buffer
 function s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
+	if bufwinnr(t:NERDTreeBufName) != -1
+	  if winnr("$") == 1
+		q
+	  endif
+	endif
   endif
 endfunction
 
@@ -78,17 +78,17 @@ function s:CdIfDirectory(directory)
   let directory = explicitDirectory || empty(a:directory)
 
   if explicitDirectory
-    exe "cd " . fnameescape(a:directory)
+	exe "cd " . fnameescape(a:directory)
   endif
 
   if directory
-    NERDTree
-    wincmd p
-    bd
+	NERDTree
+	wincmd p
+	bd
   endif
 
   if explicitDirectory
-    wincmd p
+	wincmd p
   endif
 endfunction
 
@@ -97,22 +97,22 @@ function s:UpdateNERDTree(...)
   let stay = 0
 
   if(exists("a:1"))
-    let stay = a:1
+	let stay = a:1
   end
 
   if exists("t:NERDTreeBufName")
-    let nr = bufwinnr(t:NERDTreeBufName)
-    if nr != -1
-      exe nr . "wincmd w"
-      exe substitute(mapcheck("R"), "<CR>", "", "")
-      if !stay
-        wincmd p
-      end
-    endif
+	let nr = bufwinnr(t:NERDTreeBufName)
+	if nr != -1
+	  exe nr . "wincmd w"
+	  exe substitute(mapcheck("R"), "<CR>", "", "")
+	  if !stay
+		wincmd p
+	  end
+	endif
   endif
 
   if exists(":CommandTFlush") == 2
-    CommandTFlush
+	CommandTFlush
   endif
 endfunction
 
@@ -123,9 +123,9 @@ endfunction
 
 function s:FileCommand(name, ...)
   if exists("a:1")
-    let funcname = a:1
+	let funcname = a:1
   else
-    let funcname = a:name
+	let funcname = a:name
   endif
 
   execute 'command -nargs=1 -complete=file ' . a:name . ' :call ' . funcname . '(<f-args>)'
@@ -144,7 +144,7 @@ function ChangeDirectory(dir, ...)
   NERDTree
 
   if !stay
-    wincmd p
+	wincmd p
   endif
 endfunction
 
@@ -158,9 +158,9 @@ function Remove(file)
   let removed_path = fnamemodify(a:file, ":p")
 
   if (current_path == removed_path) && (getbufvar("%", "&modified"))
-    echo "You are trying to remove the file you are editing. Please close the buffer first."
+	echo "You are trying to remove the file you are editing. Please close the buffer first."
   else
-    execute "!rm " . shellescape(a:file, 1)
+	execute "!rm " . shellescape(a:file, 1)
   endif
 
   call s:UpdateNERDTree()
@@ -173,7 +173,7 @@ endfunction
 
 function Edit(file)
   if exists("b:NERDTreeRoot")
-    wincmd p
+	wincmd p
   endif
 
   execute "e " . fnameescape(a:file)
@@ -184,7 +184,7 @@ ruby << RUBY
   home        = pwd == File.expand_path("~")
 
   if home || Regexp.new("^" + Regexp.escape(pwd)) !~ destination
-    VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
+	VIM.command(%{call ChangeDirectory(fnamemodify(a:file, ":h"), 0)})
   end
 RUBY
 endfunction
