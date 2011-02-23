@@ -70,3 +70,7 @@
 [submodule "bundle/taglist.vim"]
 	path = bundle/taglist.vim
 	url = git@github.com:wesbaker/taglist.vim.git
+[submodule "bundle/vim-python"]
+	path = bundle/vim-python
+	url = https://github.com/vim-scripts/python.vim--Vasiliev.git
+
