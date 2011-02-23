@@ -1,7 +1,7 @@
 " Turn on Pathogen and load all the bundles
 filetype off
-call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 
 " Turn off VI compatability, we won't need it where we're going
@@ -109,11 +109,6 @@ set guifont=Monaco:h12
 set nobackup
 set noswapfile
 
-" Command-T configuration
-let g:CommandTMaxHeight=20
-let g:CommandTAcceptSelectionTabMap='<CR>'
-let g:CommandTAcceptSelectionMap='<C-t>'
-
 " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python  set tabstop=4 textwidth=79 expandtab
 
@@ -145,7 +140,12 @@ let NERDSpaceDelims = 1
 " Refresh Ctags
 map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR><CR>
 
-" Setup Tlist
+" Command-T configuration
+let g:CommandTMaxHeight=20
+let g:CommandTAcceptSelectionTabMap='<CR>'
+let g:CommandTAcceptSelectionMap='<C-t>'
+
+" Tlist
 map <Leader>tl :TlistToggle<CR>
 let tlist_php_settings = 'php;c:class;f:function;d:constant'
 let Tlist_Close_On_Select = 1
@@ -166,3 +166,6 @@ map <Leader>rs :call ReloadAllSnippets()<CR>
 " FuzzyFinder
 let g:fuf_buffertag_ctagsPath = '/usr/local/bin/ctags'
 map <C-S-T> :FufBufferTag<CR>
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
