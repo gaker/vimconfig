@@ -15,7 +15,7 @@
 	url = http://github.com/mileszs/ack.vim.git
 [submodule "bundle/snipmate.vim"]
 	path = bundle/snipmate.vim
-	url = http://github.com/msanders/snipmate.vim.git
+	url = http://github.com/wesbaker/snipmate.vim.git
 [submodule "bundle/sparkup"]
 	path = bundle/sparkup
 	url = http://github.com/rstacruz/sparkup.git
@@ -78,7 +78,7 @@
 	url = https://github.com/chrismetcalf/vim-yankring.git
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
+	url = https://github.com/wesbaker/FuzzyFinder.git
 [submodule "bundle/l9"]
 	path = bundle/l9
 	url = https://github.com/clones/vim-l9.git
