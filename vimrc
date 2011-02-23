@@ -74,6 +74,7 @@ nnoremap <leader>ft Vatzf
 
 " Sort css properties...whoa
 nnoremap <leader>S ?{<CR>jV/^\s*\}<CR>k:sort<CR>:noh<CR>
+nnoremap <leader>Sa :g#\({\n\)\@<=#.,/}/sort<CR>:noh<CR>
 
 " Select pasted text
 nnoremap <leader>v V`]
