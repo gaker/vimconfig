@@ -94,7 +94,7 @@ nnoremap <C-l> <C-w>l
 
 " Set color scheme
 if &t_Co >= 256 || has("gui_running")
-   colorscheme vwilight
+   colorscheme mac_classic
 endif
 
 if &t_Co > 2 || has("gui_running")
